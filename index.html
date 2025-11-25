@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hi, M1754 ✨</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            /* ANIMASI GRADIENT HALUS */
+            background: linear-gradient(120deg, #ff9a9e, #fad0c4, #ff758c, #ff7eb3);
+            background-size: 400% 400%;
+            animation: gradientMove 12s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            text-align: center;
+            width: 85%;
+            max-width: 400px;
+        }
+
+        h1 { margin: 0; font-size: 2.2rem; color: #ff6f91; }
+        .text { font-size: 1.1rem; margin-top: 15px; }
+        .highlight { color: #ff6f91; font-weight: 600; }
+        .small { font-size: 0.95rem; color: #444; }
+
+        .buttons {
+            margin-top: 25px;
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .yes { background: #ff6f91; color: white; }
+        .no { background: #dddddd; }
+
+        .love-btn {
+            margin-top: 20px;
+            width: 100%;
+            background: orange;
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Hujan love */
+        .love {
+            position: fixed;
+            top: -20px;
+            animation: fall 4s linear forwards;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* POPUP PASSWORD */
+        .popup-bg {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(4px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-box {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            width: 85%;
+            max-width: 350px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+            animation: popUp 0.4s ease;
+        }
+
+        @keyframes popUp {
+            0% { transform: scale(0.7); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .password-input {
+            width: 80%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #aaa;
+            margin-top: 10px;
+        }
+
+        .blur-text {
+            margin-top: 20px;
+            font-size: 1.3rem;
+            color: #ff3f71;
+            filter: blur(10px);
+            transition: 0.5s;
+            user-select: none;
+        }
+
+        .reveal {
+            filter: blur(0);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Hi, M1574 👋</h1>
+        <p class="text">
+            btw.. menurutku km itu  
+            <span class="highlight">"Omorfos"🙂</span>
+        </p>
+
+        <p class="text small">
+          just want to tell you something… penasaran ngak??.<br>
+            
+        </p>
+
+        <div class="buttons">
+            <button class="btn yes" id="openPopup"> BANGETT</button>
+            <button class="btn no" id="noBtn">ga</button>
+        </div>
+
+        <button class="btn love-btn" id="loveRainBtn">klik aja klo gabut :)</button>
+    </div>
+
+    <!-- POPUP -->
+    <div class="popup-bg" id="popupBg">
+        <div class="popup-box">
+            <h2>Manusia yg lahirnya 25 Januari </h2>
+
+            <input type="password" class="password-input" id="password" placeholder="Password...">
+            <button class="btn yes" id="unlockBtn">Buka</button>
+
+            <p class="blur-text" id="secretText">Honestly, I used to like you..</p>
+        </div>
+    </div>
+
+<script>
+    // Tombol menghindar
+    const noBtn = document.getElementById("noBtn");
+    noBtn.addEventListener("mouseover", () => {
+        noBtn.style.position = "absolute";
+        noBtn.style.top = Math.random() * window.innerHeight + "px";
+        noBtn.style.left = Math.random() * window.innerWidth + "px";
+    });
+
+    // Hujan love
+    const loveBtn = document.getElementById("loveRainBtn");
+    loveBtn.addEventListener("click", () => {
+        for (let i = 0; i < 20; i++) createLove();
+    });
+
+    function createLove() {
+        const love = document.createElement("div");
+        love.classList.add("love");
+        love.innerHTML = "❤️";
+        love.style.left = Math.random() * window.innerWidth + "px";
+        love.style.fontSize = (10 + Math.random() * 20) + "px";
+        document.body.appendChild(love);
+        setTimeout(() => love.remove(), 4000);
+    }
+
+    // Popup
+    const openPopup = document.getElementById("openPopup");
+    const popupBg = document.getElementById("popupBg");
+
+    openPopup.onclick = () => popupBg.style.display = "flex";
+
+    // Password logic
+    const unlockBtn = document.getElementById("unlockBtn");
+    const secretText = document.getElementById("secretText");
+
+    unlockBtn.addEventListener("click", () => {
+        const pass = document.getElementById("password").value;
+
+        if (pass === "Misya") {
+            secretText.classList.add("reveal");
+        } else {
+            alert("Passwordnya namamu kocak");
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* ANIMASI GRADIENT HALUS */
+    background: linear-gradient(120deg, #ff9a9e, #fad0c4, #ff758c, #ff7eb3);
+    background-size: 400% 400%;
+    animation: gradientMove 12s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    text-align: center;
+    width: 85%;
+    max-width: 400px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.2rem;
+    color: #ff6f91;
+}
+
+.text {
+    font-size: 1.1rem;
+    margin-top: 15px;
+}
+
+.highlight {
+    color: #ff6f91;
+    font-weight: 600;
+}
+
+.small {
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.buttons {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.yes {
+    background: #ff6f91;
+    color: white;
+}
+
+.no {
+    background: #dddddd;
+}
+
+.love-btn {
+    margin-top: 20px;
+    width: 100%;
+    background: orange;
+    color: white;
+    font-weight: 600;
+}
+
+/* LOVE RAIN */
+.love {
+    position: fixed;
+    top: -20px;
+    animation: fall 4s linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
